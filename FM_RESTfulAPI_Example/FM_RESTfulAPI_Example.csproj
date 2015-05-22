@@ -60,6 +60,8 @@
     <Compile Include="Examples\IExample.cs" />
     <Compile Include="Examples\Test_To_Delete_1.cs" />
     <Compile Include="FMDomain\FM_Versioning.cs" />
+    <Compile Include="Helpers\ModelMessageHelper.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Value.cs" />
     <Compile Include="Requests\ValueResourceRequest.cs" />
     <Compile Include="FMDomain\FM_Pagination.cs" />
