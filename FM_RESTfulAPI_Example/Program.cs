@@ -45,12 +45,15 @@ namespace FM_RESTfulAPI_Example
             //Example4 ex4 = new Example4();
             //ex4.Execute();
 
-            NLogMessage channel = new NLogMessage();
-            Example2 ex2 = new Example2(channel);
-            ex2.Execute();
+            //NLogMessage channel = new NLogMessage();
+            //Example2 ex2 = new Example2(channel);
+            //ex2.Execute();
 
             //Example1 ex1 = new Example1();
             //ex1.Execute();
+
+            Example3 ex3 = new Example3();
+            ex3.Execute();
 
             //ReadExamples re = new ReadExamples();
             //re.Execute();

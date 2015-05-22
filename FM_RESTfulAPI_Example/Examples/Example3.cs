@@ -35,6 +35,12 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Examples
 {
+    /// <summary>
+    /// This example shows:
+    ///  - How to obtain the list of Available Values (Search List of Values)
+    ///  - How to Search List of Values by Resource Name
+    ///  - How to Search List of Values by Resource Name and using the Advance Query method
+    /// </summary>
     public class Example3 : BaseExample
     {
         public Example3(UserMessage channel = null) : base(channel)
@@ -44,14 +50,24 @@ namespace FM_RESTfulAPI_Example.Examples
 
         public override void Execute()
         {
-            ValueResourceRequest vr = new ValueResourceRequest();
-            var t = vr.GetAvailableResources();
+            // Request for the List of Values resource
+            ValueResourceRequest valueRequest = new ValueResourceRequest();
 
-            var j = vr.SearchValues("tblCountries");
-            var j2 = vr.SearchValues("tblCurrency");
+            //*********************************************************************************************//
+            // This code obtains the list of Available Values
+            var lstAvailableResources = valueRequest.GetAvailableResources();
 
+            //*********************************************************************************************//
+            // We obtain the List of Values for Countries, this will use its name: tblCountries
+            var lstCountries = valueRequest.SearchValues("tblCountries");
 
-            var j3 = vr.SearchValuesAdvanced("tblCountries", @"strName LIKE 'ES%'");
+            // We obtain the List of Values for Currencies, this will use its name: tblCurrency
+            var lstCurrencies = valueRequest.SearchValues("tblCurrency");
+
+            //*********************************************************************************************//
+            // We obtain the List of Values for Countries using the recource's name: tblCurrency and
+            // filtering those whose name starts with 'ES'
+            var lstCountriesNameStartsWith = valueRequest.SearchValuesAdvanced("tblCountries", @"strName LIKE 'ES%'");
 
         }
     }
