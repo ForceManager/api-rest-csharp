@@ -35,20 +35,39 @@ using FM_RESTfulAPI_Example.Support.Messaging;
 
 namespace FM_RESTfulAPI_Example.Examples
 {
-    public abstract class BaseExample : IExample
+    /// <summary>
+    /// This abstract class defines the contract to be maintained for Examples concrete implementations.
+    /// DPA: Do you remember SOLID (ISP)?: http://en.wikipedia.org/wiki/Interface_segregation_principle
+    /// </summary>
+    public abstract class BaseExample : IExample, IMessaging
     {
+        // We are injecting a Message Channel (mc). In our case the channel would be the console,
+        // but inverting the control (IoC) we allow the classes to write whenever and wherever they might want
         protected UserMessage _messageChannel;
 
+        // We'll inject the mc by constructor
         public BaseExample(UserMessage channel)
         {
             SetMessageChannel(channel);
         }
 
-        public abstract void Execute();
-        
+        // But we would also allow this by method
         public void SetMessageChannel(UserMessage channel)
         {
             _messageChannel = channel ?? new NLogMessage();
         }
+
+        // DPA: 
+        // Quiz: Do you know how many other others IoC injections methods are available? (It's a tricky question)
+
+        #region Abstract methods
+
+        /// <summary>
+        /// Execute/run the example
+        /// </summary>
+        public abstract void Execute();
+
+        #endregion
+
     }
 }

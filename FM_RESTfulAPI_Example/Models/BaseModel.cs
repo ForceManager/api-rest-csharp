@@ -33,8 +33,11 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Models
 {
+    /// <summary>
+    /// Abstract class meant to be extended by the models
+    /// </summary>
     public abstract class BaseModel : IModel
     {
-        public abstract string GetPrettyMessage();
+        public abstract string GetPrettyRepresentation();
     }
 }

@@ -89,7 +89,7 @@ namespace FM_RESTfulAPI_Example.Models
          * */
 
         // Methods //
-        public override string GetPrettyMessage()
+        public override string GetPrettyRepresentation()
         {
             return String.Format("Id: {0}, Name: '{1}', City: {2}", this.id, this.name, this.city_name);
         }

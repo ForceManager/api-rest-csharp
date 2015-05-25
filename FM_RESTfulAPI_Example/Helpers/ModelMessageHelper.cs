@@ -57,7 +57,7 @@ namespace FM_RESTfulAPI_Example.Helpers
         public static void PrintModel(IModel model, UserMessage channel)
         {
             if (model != null && channel != null)
-            { channel.Write(model.GetPrettyMessage()); }
+            { channel.Write(model.GetPrettyRepresentation()); }
         }
 
 

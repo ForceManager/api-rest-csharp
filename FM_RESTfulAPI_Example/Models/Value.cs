@@ -42,7 +42,7 @@ namespace FM_RESTfulAPI_Example.Models
         public String resourceName { get; set; }
         public JObject data { get; set; }
 
-        public override string GetPrettyMessage()
+        public override string GetPrettyRepresentation()
         {
             return String.Format("ResourceName: '{0}'", this.resourceName);
         }

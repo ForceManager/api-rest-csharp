@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Examples
 {
+    /// <summary>
+    /// This interface tells what an example should implement
+    /// </summary>
     public interface IExample
     {
         void Execute();
-        void SetMessageChannel(UserMessage channel);
     }
 }

@@ -41,7 +41,7 @@ namespace FM_RESTfulAPI_Example.Models
         public string name { get; set; }
         public string description { get; set; }
 
-        public override string GetPrettyMessage()
+        public override string GetPrettyRepresentation()
         {
             return String.Format("ResourceName: '{0}', Description: '{1}'", this.name, this.description);
         }

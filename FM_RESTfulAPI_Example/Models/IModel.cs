@@ -38,6 +38,6 @@ namespace FM_RESTfulAPI_Example.Models
     /// </summary>
     public interface IModel
     {
-        String GetPrettyMessage();
+        String GetPrettyRepresentation();
     }
 }

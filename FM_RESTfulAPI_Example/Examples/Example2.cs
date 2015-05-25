@@ -60,7 +60,7 @@ namespace FM_RESTfulAPI_Example.Examples
             // Searching companies by postcode using Important Fields method
             // For companies, the postcode is defined as one of important fields
             String postCode = "08034";
-            Dictionary<String, String> filter = new Dictionary<string, string> { { "postcode", postCode} };
+            Dictionary<String, String> filter = new Dictionary<string, string> { { "postcode", postCode } };
 
             _messageChannel.Write("Searching companies with postcode = " + postCode);
             var lstCompaniesPostCode = companyRequest.SearchEntitiesByImportantFields(filter);

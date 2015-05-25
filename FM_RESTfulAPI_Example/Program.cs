@@ -35,43 +35,28 @@ using FM_RESTfulAPI_Example.Support.Messaging;
 
 namespace FM_RESTfulAPI_Example
 {
+    /// <summary>
+    /// This is the entry point of the app
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-           // Test_To_Delete_1 c = new Test_To_Delete_1();
-          //  c.Execute();
+            /*************************************************************************************/
+            Example1 example1 = new Example1();
+            example1.Execute();
 
-            Example4 ex4 = new Example4();
-            ex4.Execute();
+            /*************************************************************************************/
+            Example2 example2 = new Example2();
+            example2.Execute();
+            
+            /*************************************************************************************/
+            Example3 example3 = new Example3();
+            example3.Execute();
 
-            //NLogMessage channel = new NLogMessage();
-            //Example2 ex2 = new Example2(channel);
-            //ex2.Execute();
-
-            //Example1 ex1 = new Example1();
-            //ex1.Execute();
-
-            //Example3 ex3 = new Example3();
-            //ex3.Execute();
-
-            //ReadExamples re = new ReadExamples();
-            //re.Execute();
-
-           // ValueResource vr = new ValueResource();
-            // vr.GetAvailableResources();
-
-           // vr.AdvancedSearchExample();
-
-            //DeleteExamples de = new DeleteExamples();
-            //de.DeleteEntityExample();
-
-            //CreateExamples ce = new CreateExamples();
-            //ce.CreateEntityExample();
-
-            //UpdateExamples ue = new UpdateExamples();
-            //ue.UpdateEntityExample();
-
+            /*************************************************************************************/
+            Example4 example4 = new Example4();
+            example4.Execute();
         }
     }
 }

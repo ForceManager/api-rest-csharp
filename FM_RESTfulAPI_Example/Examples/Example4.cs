@@ -37,6 +37,12 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Examples
 {
+    /// <summary>
+    /// This example shows how to Perform Operations on List of Values (LoV):
+    ///  - How to create a LoV object
+    ///  - How to update LoV
+    ///  - How to delete LoV
+    /// </summary>
     public class Example4 : BaseExample
     {
         protected const String RESOURCE_NAME = "Z_tblTestLinks";
@@ -46,12 +52,7 @@ namespace FM_RESTfulAPI_Example.Examples
 
         }
 
-        /// <summary>
-        /// This example shows how to Perform Operations on List of Values (LoV):
-        ///  - How to create a LoV object
-        ///  - How to update LoV
-        ///  - How to delete LoV
-        /// </summary>
+       
         public override void Execute()
         {
             // Request for the List of Values resource
