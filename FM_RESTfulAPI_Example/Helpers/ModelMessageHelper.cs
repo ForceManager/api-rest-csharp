@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using FM_RESTfulAPI_Example.Models;
 using FM_RESTfulAPI_Example.Support.Messaging;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,9 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Helpers
 {
+    /// <summary>
+    /// Used to write human readable common objects representations to a channel
+    /// </summary>
     public static class ModelMessageHelper
     {
         public static void PrintModelList(Object lstModel, UserMessage channel)
@@ -45,10 +49,22 @@ namespace FM_RESTfulAPI_Example.Helpers
                 {
                     dynamic tmpLstModel = lstModel;
 
-                    if (tmpLstModel.Count > 0 && tmpLstModel[0] is IModel)
+                    if (tmpLstModel.Count > 0)
                     {
-                        foreach (IModel model in tmpLstModel)
-                        { PrintModel(model, channel); }
+                        if (tmpLstModel[0] is IModel)
+                        {
+                            foreach (IModel model in tmpLstModel)
+                            { PrintModel(model, channel); }    
+                        }
+                        else if (tmpLstModel[0] is JObject)
+                        {
+                            foreach (JObject model in tmpLstModel)
+                            { PrintJson(model, channel); }
+                        }
+                        else
+                        { throw new Exception("ModelMessageHelper doesn't support this model type"); }
+
+                        
                     }
                     else
                     { channel.Write("No data", UserMessage.MessageLevel.Warn); }
@@ -63,11 +79,26 @@ namespace FM_RESTfulAPI_Example.Helpers
            
         }
 
-
+        /// <summary>
+        /// Printing regular model
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="channel"></param>
         public static void PrintModel(IModel model, UserMessage channel)
         {
             if (model != null && channel != null)
             { channel.Write(model.GetPrettyRepresentation()); }
+        }
+
+        /// <summary>
+        /// Printing Json
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="channel"></param>
+        public static void PrintJson(JObject model, UserMessage channel)
+        {
+            if (model != null && channel != null)
+            { channel.Write(model.ToString()); }
         }
 
     }

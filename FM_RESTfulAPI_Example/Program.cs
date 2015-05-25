@@ -50,18 +50,16 @@ namespace FM_RESTfulAPI_Example
                 messageChannel.Write("Running the examples...");
 
                 ///*************************************************************************************/
-                //Example1 example1 = new Example1(messageChannel);
-                //example1.Execute();
+                Example1 example1 = new Example1(messageChannel);
+                example1.Execute();
 
-                ///*************************************************************************************/
-                //Example2 example2 = new Example2(messageChannel);
-                //example2.Execute();
+                /*************************************************************************************/
+                Example2 example2 = new Example2(messageChannel);
+                example2.Execute();
 
                 /*************************************************************************************/
                 Example3 example3 = new Example3(messageChannel);
                 example3.Execute();
-
-                return;
 
                 /*************************************************************************************/
                 Example4 example4 = new Example4(messageChannel);
