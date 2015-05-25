@@ -50,7 +50,7 @@ namespace FM_RESTfulAPI_Example.Examples
 
         public override void Execute()
         {
-            _messageChannel.Write("Running example 3");
+            _messageChannel.Write(">>>> Running example 3");
 
             // Request for the List of Values resource
             ValueResourceRequest valueRequest = new ValueResourceRequest();
@@ -81,6 +81,8 @@ namespace FM_RESTfulAPI_Example.Examples
             // filtering those whose name starts with 'ES'
             var lstCountriesNameStartsWith = valueRequest.SearchValuesAdvanced("tblCountries", @"strName LIKE 'ES%'");
 
+
+            _messageChannel.Write("==== END Running example 3");
         }
     }
 }

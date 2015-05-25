@@ -55,7 +55,7 @@ namespace FM_RESTfulAPI_Example.Examples
        
         public override void Execute()
         {
-            _messageChannel.Write("Running example 4");
+            _messageChannel.Write(">>>> Running example 4");
 
             // Request for the List of Values resource
             StandardRequest<Value> valueRequest = new StandardRequest<Value>(ModelType.Models.Value);
@@ -94,7 +94,8 @@ namespace FM_RESTfulAPI_Example.Examples
                     _messageChannel.Write(String.Format("Was deleted the object?: {0}", deleted));
                 }
             }
-            
+
+            _messageChannel.Write("==== END Running example 4");            
         }
 
 

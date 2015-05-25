@@ -47,6 +47,8 @@ namespace FM_RESTfulAPI_Example
 
             try
             {
+                messageChannel.Write("Running the examples...");
+
                 /*************************************************************************************/
                 Example1 example1 = new Example1(messageChannel);
                 example1.Execute();

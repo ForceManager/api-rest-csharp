@@ -53,7 +53,7 @@ namespace FM_RESTfulAPI_Example.Examples
        
         public override void Execute()
         {
-            _messageChannel.Write("Running example 2");
+            _messageChannel.Write(">>>> Running example 2");
 
             // Request for the Company resource
             StandardRequest<Company> companyRequest = new StandardRequest<Company>(ModelType.Models.Company);
@@ -73,6 +73,9 @@ namespace FM_RESTfulAPI_Example.Examples
             String advancedQuery = @"postcode LIKE '08%'";
             _messageChannel.Write("Searching companies with query = " + advancedQuery);
             var lstCompaniesPostCodeStartsWith = companyRequest.SearchEntityAdvanced(advancedQuery);
+
+
+            _messageChannel.Write("==== END Running example 2");
 
         }
     }

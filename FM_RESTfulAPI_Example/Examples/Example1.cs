@@ -53,7 +53,7 @@ namespace FM_RESTfulAPI_Example.Examples
 
         public override void Execute()
         {
-            _messageChannel.Write("Running example 1");
+            _messageChannel.Write(">>>> Running example 1");
 
             // Request for the Company resource
             StandardRequest<Company> companyRequest = new StandardRequest<Company>(ModelType.Models.Company);
@@ -84,12 +84,17 @@ namespace FM_RESTfulAPI_Example.Examples
 
                     // The company is deleted on FM
                     bool deleted = companyRequest.DeleteEntity(processed.id);
+
+                    _messageChannel.Write(String.Format("Was updated the company?: {0}", updated));
+                    _messageChannel.Write(String.Format("Was deleted the company?: {0}", deleted));
                 }
             }
             else
             {
                 _messageChannel.Write("The system was unable to create the company", UserMessage.MessageLevel.Error);
             }
+
+            _messageChannel.Write("==== END Running example 1");
         }
 
 
