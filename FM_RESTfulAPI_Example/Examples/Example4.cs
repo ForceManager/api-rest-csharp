@@ -55,6 +55,8 @@ namespace FM_RESTfulAPI_Example.Examples
        
         public override void Execute()
         {
+            _messageChannel.Write("Running example 4");
+
             // Request for the List of Values resource
             StandardRequest<Value> valueRequest = new StandardRequest<Value>(ModelType.Models.Value);
 

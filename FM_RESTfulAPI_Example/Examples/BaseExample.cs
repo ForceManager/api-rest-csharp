@@ -54,7 +54,7 @@ namespace FM_RESTfulAPI_Example.Examples
         // But we would also allow this by method
         public void SetMessageChannel(UserMessage channel)
         {
-            _messageChannel = channel ?? new NLogMessage();
+            _messageChannel = channel ?? MessageChannelFactory.CreateChannel();
         }
 
         // DPA: 

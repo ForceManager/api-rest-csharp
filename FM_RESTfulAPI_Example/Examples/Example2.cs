@@ -53,6 +53,8 @@ namespace FM_RESTfulAPI_Example.Examples
        
         public override void Execute()
         {
+            _messageChannel.Write("Running example 2");
+
             // Request for the Company resource
             StandardRequest<Company> companyRequest = new StandardRequest<Company>(ModelType.Models.Company);
 

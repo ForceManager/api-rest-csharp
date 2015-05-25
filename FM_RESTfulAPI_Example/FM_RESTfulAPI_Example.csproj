@@ -79,6 +79,7 @@
     <Compile Include="Requests\StandardRequest.cs" />
     <Compile Include="FMDomain\FM_ResourceLocator.cs" />
     <Compile Include="Support\Messaging\IMessaging.cs" />
+    <Compile Include="Support\Messaging\MessageChannelFactory.cs" />
     <Compile Include="Support\Messaging\UserMessage.cs" />
     <Compile Include="Support\Messaging\NLogMessage.cs" />
   </ItemGroup>

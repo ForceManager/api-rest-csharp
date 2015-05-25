@@ -42,21 +42,34 @@ namespace FM_RESTfulAPI_Example
     {
         static void Main(string[] args)
         {
-            /*************************************************************************************/
-            Example1 example1 = new Example1();
-            example1.Execute();
+            // Channel used to display messages.
+            UserMessage messageChannel = MessageChannelFactory.CreateChannel();
 
-            /*************************************************************************************/
-            Example2 example2 = new Example2();
-            example2.Execute();
-            
-            /*************************************************************************************/
-            Example3 example3 = new Example3();
-            example3.Execute();
+            try
+            {
+                /*************************************************************************************/
+                Example1 example1 = new Example1(messageChannel);
+                example1.Execute();
 
-            /*************************************************************************************/
-            Example4 example4 = new Example4();
-            example4.Execute();
+                /*************************************************************************************/
+                Example2 example2 = new Example2(messageChannel);
+                example2.Execute();
+
+                /*************************************************************************************/
+                Example3 example3 = new Example3(messageChannel);
+                example3.Execute();
+
+                /*************************************************************************************/
+                Example4 example4 = new Example4(messageChannel);
+                example4.Execute();
+
+                /*************************************************************************************/
+                messageChannel.Write("Process ended!");
+            }
+            catch (Exception ex)
+            {
+                messageChannel.Write(ex.Message, UserMessage.MessageLevel.Fatal);
+            }
         }
     }
 }

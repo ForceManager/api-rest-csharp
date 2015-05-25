@@ -50,6 +50,8 @@ namespace FM_RESTfulAPI_Example.Examples
 
         public override void Execute()
         {
+            _messageChannel.Write("Running example 3");
+
             // Request for the List of Values resource
             ValueResourceRequest valueRequest = new ValueResourceRequest();
 
