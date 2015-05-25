@@ -57,6 +57,16 @@ namespace FM_RESTfulAPI_Example.Examples
             // This code obtains the list of Available Values
             var lstAvailableResources = valueRequest.GetAvailableResources();
 
+            // Here we'll validate it's defined a Z table called Z_tblTestLinks
+            if (lstAvailableResources != null)
+            {
+                var Z_tblTestLinks = (from r in lstAvailableResources
+                                      where r.name.Equals("Z_tblTestLinks", StringComparison.InvariantCultureIgnoreCase)
+                                      select r).FirstOrDefault();
+
+                _messageChannel.Write(String.Format("Table Z_tblTestLinks is present?: {0}", (Z_tblTestLinks != null)));
+            }
+
             //*********************************************************************************************//
             // We obtain the List of Values for Countries, this will use its name: tblCountries
             var lstCountries = valueRequest.SearchValues("tblCountries");

@@ -81,6 +81,7 @@ namespace FM_RESTfulAPI_Example.Models
         public string website { get; set; }
 
         // Extra fields //
+        public String Z_ListTestLinks { get; set; }
         /* Here can be the Company's extrafields
         public string Z_DateExtraField { get; set; }
         public string Z_Decimal { get; set; }

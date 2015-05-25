@@ -82,14 +82,12 @@ namespace FM_RESTfulAPI_Example.Examples
                     bool deleted = companyRequest.DeleteEntity(processed.id);
                 }
             }
-            else
-            {
-                // .... msg
-            }
-
         }
 
-       
+
+        #region Internal Methods
+
+
         protected Company GetSampleObject()
         {
             Company result = new Company()
@@ -121,5 +119,9 @@ namespace FM_RESTfulAPI_Example.Examples
                 tmpCompany.phone = "";
             }
         }
+
+
+        #endregion
+
     }
 }

@@ -36,7 +36,8 @@ using NLog;
 namespace FM_RESTfulAPI_Example.Support.Messaging
 {
     /// <summary>
-    /// This is just a single class for writing messages to the console. We'll use Nlog for this. For two reasons:
+    /// This is just a single class for writing messages to NLog. We'll use Nlog for this. 
+    /// The idea is to use the console, for two reasons:
     /// - It has colors.
     /// - You can switch easy to other target (e.g.: file, db, etc...)
     /// </summary>
