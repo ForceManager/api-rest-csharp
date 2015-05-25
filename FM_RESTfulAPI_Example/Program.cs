@@ -49,7 +49,7 @@ namespace FM_RESTfulAPI_Example
             {
                 messageChannel.Write("Running the examples...");
 
-                /*************************************************************************************/
+                ///*************************************************************************************/
                 Example1 example1 = new Example1(messageChannel);
                 example1.Execute();
 
@@ -64,14 +64,14 @@ namespace FM_RESTfulAPI_Example
                 /*************************************************************************************/
                 Example4 example4 = new Example4(messageChannel);
                 example4.Execute();
-
-                /*************************************************************************************/
-                messageChannel.Write("Process ended!");
             }
             catch (Exception ex)
             {
                 messageChannel.Write(ex.Message, UserMessage.MessageLevel.Fatal);
             }
+
+            /*************************************************************************************/
+            messageChannel.Write("Process ended!");
         }
     }
 }

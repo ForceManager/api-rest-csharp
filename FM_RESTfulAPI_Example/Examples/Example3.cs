@@ -25,6 +25,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
+using FM_RESTfulAPI_Example.Helpers;
 using FM_RESTfulAPI_Example.Requests;
 using FM_RESTfulAPI_Example.Support.Messaging;
 using System;
@@ -58,6 +59,7 @@ namespace FM_RESTfulAPI_Example.Examples
             //*********************************************************************************************//
             // This code obtains the list of Available Values
             var lstAvailableResources = valueRequest.GetAvailableResources();
+            ModelMessageHelper.PrintModelList(lstAvailableResources, _messageChannel);
 
             // Here we'll validate it's defined a Z table called Z_tblTestLinks
             if (lstAvailableResources != null)
@@ -71,15 +73,21 @@ namespace FM_RESTfulAPI_Example.Examples
 
             //*********************************************************************************************//
             // We obtain the List of Values for Countries, this will use its name: tblCountries
+            _messageChannel.Write("Getting tblCountries");
             var lstCountries = valueRequest.SearchValues("tblCountries");
+            ModelMessageHelper.PrintModelList(lstCountries, _messageChannel);
 
             // We obtain the List of Values for Currencies, this will use its name: tblCurrency
+            _messageChannel.Write("Getting tblCurrency");
             var lstCurrencies = valueRequest.SearchValues("tblCurrency");
+            ModelMessageHelper.PrintModelList(lstCurrencies, _messageChannel);
 
             //*********************************************************************************************//
             // We obtain the List of Values for Countries using the recource's name: tblCurrency and
             // filtering those whose name starts with 'ES'
+            _messageChannel.Write("Getting tblCountries filtering those whose name starts with 'ES'");
             var lstCountriesNameStartsWith = valueRequest.SearchValuesAdvanced("tblCountries", @"strName LIKE 'ES%'");
+            ModelMessageHelper.PrintModelList(lstCountriesNameStartsWith, _messageChannel);
 
 
             _messageChannel.Write("==== END Running example 3");
