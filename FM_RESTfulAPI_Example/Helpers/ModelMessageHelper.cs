@@ -37,20 +37,30 @@ namespace FM_RESTfulAPI_Example.Helpers
 {
     public static class ModelMessageHelper
     {
-        public static void PrintModelList(IList<IModel> lstModel, UserMessage channel)
+        public static void PrintModelList(Object lstModel, UserMessage channel)
         {
-            if (channel != null)
+            try
             {
-                if (lstModel != null && lstModel.Count > 0)
+                if (channel != null && lstModel != null)
                 {
-                    foreach (var model in lstModel)
-                    { PrintModel(model, channel); }
+                    dynamic tmpLstModel = lstModel;
+
+                    if (tmpLstModel.Count > 0 && tmpLstModel[0] is IModel)
+                    {
+                        foreach (IModel model in tmpLstModel)
+                        { PrintModel(model, channel); }
+                    }
+                    else
+                    { channel.Write("No data", UserMessage.MessageLevel.Warn); }
                 }
                 else
-                { channel.Write("No data", UserMessage.MessageLevel.Warn); }    
+                { throw new Exception("ModelMessageHelper needs a valid channel to write to"); }
             }
-            else
-            { throw new Exception("ModelMessageHelper needs a valid channel to write to"); }
+            catch
+            {
+                // do something...
+            }
+           
         }
 
 
@@ -59,23 +69,6 @@ namespace FM_RESTfulAPI_Example.Helpers
             if (model != null && channel != null)
             { channel.Write(model.GetPrettyRepresentation()); }
         }
-
-
-        //public static void PrintModelList2(this IList<BaseModel> lstModel, UserMessage channel)
-        //{
-        //    if (channel != null)
-        //    {
-        //        if (lstModel != null && lstModel.Count > 0)
-        //        {
-        //            foreach (var model in lstModel)
-        //            { PrintModel(model, channel); }
-        //        }
-        //        else
-        //        { channel.Write("No data", UserMessage.MessageLevel.Warn); }
-        //    }
-        //    else
-        //    { throw new Exception("ModelMessageHelper needs a valid channel to write to"); }
-        //}
 
     }
 }

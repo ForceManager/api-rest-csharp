@@ -66,14 +66,14 @@ namespace FM_RESTfulAPI_Example.Examples
 
             _messageChannel.Write("Searching companies with postcode = " + postCode);
             var lstCompaniesPostCode = companyRequest.SearchEntitiesByImportantFields(filter);
-
+            ModelMessageHelper.PrintModelList(lstCompaniesPostCode, _messageChannel);
 
             //*********************************************************************************************//
             // Searching companies by postcode which starts with 08 using Advance Search method
             String advancedQuery = @"postcode LIKE '08%'";
             _messageChannel.Write("Searching companies with query = " + advancedQuery);
             var lstCompaniesPostCodeStartsWith = companyRequest.SearchEntityAdvanced(advancedQuery);
-
+            ModelMessageHelper.PrintModelList(lstCompaniesPostCodeStartsWith, _messageChannel);
 
             _messageChannel.Write("==== END Running example 2");
 
