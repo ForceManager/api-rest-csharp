@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FM_RESTfulAPI_Example.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -45,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,8 +62,9 @@
     <Compile Include="Examples\Example3.cs" />
     <Compile Include="Examples\Example4.cs" />
     <Compile Include="Examples\IExample.cs" />
-    <Compile Include="Examples\Test_To_Delete_1.cs" />
     <Compile Include="FMDomain\FM_Versioning.cs" />
+    <Compile Include="Helpers\ModelMessageHelper.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Value.cs" />
     <Compile Include="Requests\ValueResourceRequest.cs" />
     <Compile Include="FMDomain\FM_Pagination.cs" />
@@ -77,6 +82,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\StandardRequest.cs" />
     <Compile Include="FMDomain\FM_ResourceLocator.cs" />
+    <Compile Include="Support\Messaging\IMessaging.cs" />
+    <Compile Include="Support\Messaging\MessageChannelFactory.cs" />
     <Compile Include="Support\Messaging\UserMessage.cs" />
     <Compile Include="Support\Messaging\NLogMessage.cs" />
   </ItemGroup>

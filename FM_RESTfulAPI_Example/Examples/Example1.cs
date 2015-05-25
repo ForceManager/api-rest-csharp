@@ -16,7 +16,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL Tritium Software S.L. BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using FM_RESTfulAPI_Example.Models;
 using FM_RESTfulAPI_Example.Requests;
+using FM_RESTfulAPI_Example.Support.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,10 +36,16 @@ using System.Threading.Tasks;
 
 namespace FM_RESTfulAPI_Example.Examples
 {
+    /// <summary>
+    /// This example shows how to:
+    ///  - Create an object in FM System
+    ///  - Search the same object by id
+    ///  - Perform some update on the searched object and save the changes on FM
+    ///  - Delete the object on FM
+    /// </summary>
     public class Example1 : BaseExample
     {
-
-        public Example1() : base(null)
+        public Example1(UserMessage channel = null) : base(channel)
         {
 
         }
@@ -46,31 +53,52 @@ namespace FM_RESTfulAPI_Example.Examples
 
         public override void Execute()
         {
+            _messageChannel.Write(">>>> Running example 1");
+
+            // Request for the Company resource
             StandardRequest<Company> companyRequest = new StandardRequest<Company>(ModelType.Models.Company);
 
-            // First, we create a new company
-            Company data = GetSampleObject();
+            // First, company is created on memory
+            Company companyData = GetSampleObject();
             
-            // Save the entity on FM
-            GenericIdDescription processed = companyRequest.CreateEntity(data);
+            // The object is saved on FM
+            GenericIdDescription processed = companyRequest.CreateEntity(companyData);
+            companyData = null;
 
             if (processed != null)
             {
-                // We search the company by id
+                _messageChannel.Write(String.Format("The company was created with id: {0}", processed.id));
+                
+                // The company is searched by id (the id we obtained in the creation)
                 Company tmpCompany = companyRequest.SearchByEntityId(processed.id);
 
                 if (tmpCompany == null)
                 { throw new Exception("This is weird, should not happen"); }
                 else
                 {
+                    // The object as changed on memory
                     UpdateSampleObject(ref tmpCompany);
+
+                    // The object is updated in FM
                     bool updated = companyRequest.UpdateEntity(processed.id, tmpCompany);
 
+                    // The company is deleted on FM
                     bool deleted = companyRequest.DeleteEntity(processed.id);
+
+                    _messageChannel.Write(String.Format("Was updated the company?: {0}", updated));
+                    _messageChannel.Write(String.Format("Was deleted the company?: {0}", deleted));
                 }
             }
+            else
+            {
+                _messageChannel.Write("The system was unable to create the company", UserMessage.MessageLevel.Error);
+            }
 
+            _messageChannel.Write("==== END Running example 1");
         }
+
+
+        #region Internal Methods
 
 
         protected Company GetSampleObject()
@@ -90,7 +118,7 @@ namespace FM_RESTfulAPI_Example.Examples
             return result;
         }
 
-
+       
         protected void UpdateSampleObject(ref Company tmpCompany)
         {
             if (tmpCompany != null)
@@ -104,5 +132,9 @@ namespace FM_RESTfulAPI_Example.Examples
                 tmpCompany.phone = "";
             }
         }
+
+
+        #endregion
+
     }
 }

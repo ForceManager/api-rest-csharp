@@ -16,7 +16,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL Tritium Software S.L. BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -35,8 +35,8 @@ namespace FM_RESTfulAPI_Example.Support.Messaging
 {
     public abstract class UserMessage
     {
-        /* We define our own log levels, this would allow us to change the log system easily. 
-          So, the only thing we need to do here is to map them to the log system ones. */
+        /* We define our own message levels, this would allow us to change the message system easily. 
+          So, the only thing we need to do here is to map them to the concrete implementations. */
         public enum MessageLevel
         {
             Off,
@@ -48,6 +48,6 @@ namespace FM_RESTfulAPI_Example.Support.Messaging
             Trace
         }
 
-        abstract public void Write(String message, MessageLevel level);
+        abstract public void Write(String message, MessageLevel level = MessageLevel.Info);
     }
 }

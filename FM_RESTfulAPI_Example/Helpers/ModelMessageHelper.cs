@@ -25,26 +25,57 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-using Newtonsoft.Json.Linq;
+using FM_RESTfulAPI_Example.Models;
+using FM_RESTfulAPI_Example.Support.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FM_RESTfulAPI_Example.Models
+namespace FM_RESTfulAPI_Example.Helpers
 {
-    /// <summary>
-    /// Used to store data for the Value resource on the FM RESTful API
-    /// </summary>
-    public class Value : BaseModel
+    public static class ModelMessageHelper
     {
-        public String resourceName { get; set; }
-        public JObject data { get; set; }
-
-        public override string GetPrettyRepresentation()
+        public static void PrintModelList(IList<IModel> lstModel, UserMessage channel)
         {
-            return String.Format("ResourceName: '{0}'", this.resourceName);
+            if (channel != null)
+            {
+                if (lstModel != null && lstModel.Count > 0)
+                {
+                    foreach (var model in lstModel)
+                    { PrintModel(model, channel); }
+                }
+                else
+                { channel.Write("No data", UserMessage.MessageLevel.Warn); }    
+            }
+            else
+            { throw new Exception("ModelMessageHelper needs a valid channel to write to"); }
         }
+
+
+        public static void PrintModel(IModel model, UserMessage channel)
+        {
+            if (model != null && channel != null)
+            { channel.Write(model.GetPrettyRepresentation()); }
+        }
+
+
+        //public static void PrintModelList2(this IList<BaseModel> lstModel, UserMessage channel)
+        //{
+        //    if (channel != null)
+        //    {
+        //        if (lstModel != null && lstModel.Count > 0)
+        //        {
+        //            foreach (var model in lstModel)
+        //            { PrintModel(model, channel); }
+        //        }
+        //        else
+        //        { channel.Write("No data", UserMessage.MessageLevel.Warn); }
+        //    }
+        //    else
+        //    { throw new Exception("ModelMessageHelper needs a valid channel to write to"); }
+        //}
+
     }
 }

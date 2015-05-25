@@ -16,7 +16,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL Tritium Software S.L. BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -37,7 +37,7 @@ namespace FM_RESTfulAPI_Example.Models
     /// <summary>
     /// Represents your Company model on the FM System
     /// </summary>
-    public class Company : IModel
+    public class Company : BaseModel
     {
         // Standard fields // 
         public string account_type_id { get; set; }
@@ -81,13 +81,19 @@ namespace FM_RESTfulAPI_Example.Models
         public string website { get; set; }
 
         // Extra fields //
+        public String Z_ListTestLinks { get; set; }
+        /* Here can be the Company's extrafields
         public string Z_DateExtraField { get; set; }
         public string Z_Decimal { get; set; }
-        public string Z_DeCurrency { get; set; }
-        public string Z_DPA_MultiValue { get; set; }
-        public string Z_parentnonull { get; set; }
-        public string Z_parentnull { get; set; }
-        public string Z_TestCurrency { get; set; }
+        public string Z_Currency { get; set; }
+         * */
+
+        // Methods //
+        public override string GetPrettyRepresentation()
+        {
+            return String.Format("Id: {0}, Name: '{1}', City: {2}", this.id, this.name, this.city_name);
+        }
+
     }
 
 }

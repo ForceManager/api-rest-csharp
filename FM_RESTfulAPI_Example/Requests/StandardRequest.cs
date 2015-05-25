@@ -16,7 +16,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL Tritium Software S.L. BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -42,7 +42,7 @@ namespace FM_RESTfulAPI_Example.Requests
     /// Companies, Contacts, Opportunities, etc...
     /// </summary>
     /// <typeparam name="T">The kind of object (model) we are trying to obtain</typeparam>
-    public class StandardRequest<T> where T: Models.IModel
+    public class StandardRequest<T> where T: IModel
     {
         /// <summary>
         /// The constructor will initialize this field, defining this model will tell
@@ -63,7 +63,7 @@ namespace FM_RESTfulAPI_Example.Requests
         /// Implements the "Search all entities" functionality
         /// </summary>
         /// <returns>A list of objects</returns>
-        public List<T> SearchAllEntities()
+        public IList<T> SearchAllEntities()
         {
             return SearchEntitiesByImportantFields(null);
         }
@@ -73,7 +73,7 @@ namespace FM_RESTfulAPI_Example.Requests
         /// </summary>
         /// <param name="filter">Dictionary with the filters (Key = parameter Name, Value = parameter Value)</param>
         /// <returns>A list of objects</returns>
-        public List<T> SearchEntitiesByImportantFields(Dictionary<String, String> filter)
+        public IList<T> SearchEntitiesByImportantFields(Dictionary<String, String> filter)
         {
             var result = new List<T>();
             IRestResponse response = null;
