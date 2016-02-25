@@ -49,7 +49,7 @@ namespace ws.sample
             // Print companies
             foreach (Company company in companies)
             {
-                Console.WriteLine(company.getName());
+                Console.WriteLine(company.name);
             }
         }
     }
