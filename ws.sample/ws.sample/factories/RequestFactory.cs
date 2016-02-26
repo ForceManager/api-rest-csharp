@@ -48,7 +48,7 @@ namespace ws.sample.factories
             {
 		        string url;
 		        if (query != null) {
-			        url = Constants.API_URL + fmEntity + Constants.PARAMETER_ADVANCED_SEARCH + query;
+                    url = Constants.API_URL + fmEntity + "?" + Constants.PARAMETER_ADVANCED_SEARCH + "=" + query;
 		        } else {
 			        url = Constants.API_URL + fmEntity;
 		        }
