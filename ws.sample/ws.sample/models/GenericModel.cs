@@ -32,17 +32,7 @@ namespace ws.sample.models
 {
     public class GenericModel
     {
-        private string id;
-
-        public string getId()
-        {
-            return id;
-        }
-
-        public void setId(string id)
-        {
-            this.id = id;
-        }
+        public string id { get; set; }
 
         public String toString()
         {

@@ -113,7 +113,7 @@ namespace ws.sample.factories
             try
             {
                 string url;
-                url = Constants.API_URL + fmEntity + "/" + obj.getId();
+                url = Constants.API_URL + fmEntity + "/" + obj.id;
 
                 HttpClient client = new HttpClient();
                 HttpRequestMessage request = getHttpRequestMessage();
@@ -146,7 +146,7 @@ namespace ws.sample.factories
             try
             {
                 string url;
-                url = Constants.API_URL + fmEntity + "/" + obj.getId();
+                url = Constants.API_URL + fmEntity + "/" + obj.id;
 
                 HttpClient client = new HttpClient();
                 HttpRequestMessage request = getHttpRequestMessage();

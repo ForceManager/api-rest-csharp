@@ -53,7 +53,6 @@ namespace ws.sample
         public string geocode_longitude { get; set; }
         public string geocoded { get; set; }
         public string geolocalisation_accuracy { get; set; }
-        public string id { get; set; }
         public string mobile_phone { get; set; }
         public string modified_by { get; set; }
         public string modified_date { get; set; }
